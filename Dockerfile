@@ -20,4 +20,4 @@ RUN conda clean -tipsy
 RUN fix-permissions $CONDA_DIR
 
 # Install Sample Notebook
-COPY ./*.ipynb /home/$NB_USER/
+COPY *.ipynb /home/$NB_USER/
