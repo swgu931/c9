@@ -8,7 +8,7 @@ LABEL maintainer "SW"
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
-    NB_USER=jupyter
+    NB_USER=jovyan
     
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
@@ -21,8 +21,9 @@ RUN fix-permissions $CONDA_DIR
 
 # Install Sample Notebook
 RUN fix-permissions /home/
-RUN mkdir -p /home/$NB_USER && fix-permissions /home/$NB_USER 
+RUN mkdir /home/$NB_USER/c9-src && fix-permissions /home/$NB_USER/c9-src
 COPY *.ipynb /home/$NB_USER/c9-src
+
 RUN fix-permissions /home/$NB_USER/c9-src
 WORKDIR $HOME/$NB_USER
 
