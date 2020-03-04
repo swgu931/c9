@@ -22,9 +22,9 @@ RUN fix-permissions $CONDA_DIR
 # Install Sample Notebook
 RUN fix-permissions /home/
 RUN mkdir /home/$NB_USER/c9-src && fix-permissions /home/$NB_USER/c9-src
-COPY *.ipynb /home/$NB_USER/c9-src
+COPY *.ipynb /home/$NB_USER/c9-src/
 
-RUN fix-permissions /home/$NB_USER/c9-src
+RUN fix-permissions /home/$NB_USER/c9-src/
 WORKDIR $HOME/$NB_USER
 
 ENTRYPOINT ["tini", "-g", "--"]
