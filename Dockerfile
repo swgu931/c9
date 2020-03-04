@@ -20,4 +20,9 @@ RUN conda clean -tipsy
 RUN fix-permissions $CONDA_DIR
 
 # Install Sample Notebook
-COPY *.ipynb /home/$NB_USER/
+RUN mkdir /home/$NB_USER/c9-src
+COPY *.ipynb /home/$NB_USER/c9-src
+WORKDIR $HOME/$NB_USER
+
+ENTRYPOINT ["tini", "-g", "--"]
+CMD ["start-notebook.sh"]
