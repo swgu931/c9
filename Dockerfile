@@ -17,11 +17,13 @@ RUN conda install --quiet --yes \
     'sympy=1.4*' \
     'matplotlib=3.1.*' 
 RUN conda clean -tipsy 
-RUN fix-permissions $CONDA_DIR
+RUN fix-permissions $CONDA_DIR 
 
 # Install Sample Notebook
-RUN mkdir -p /home/$NB_USER/c9-src
+RUN fix-permissions /home/
+RUN mkdir -p /home/$NB_USER && fix-permissions /home/$NB_USER 
 COPY *.ipynb /home/$NB_USER/c9-src
+RUN fix-permissions /home/$NB_USER/c9-src
 WORKDIR $HOME/$NB_USER
 
 ENTRYPOINT ["tini", "-g", "--"]
