@@ -16,18 +16,18 @@ RUN conda install --quiet --yes \
     'scipy=1.3.*' \
     'sympy=1.4*' \
     'matplotlib=3.1.*' 
+    'cvxpy'
 RUN conda clean -tipsy 
 RUN fix-permissions $CONDA_DIR 
 
 # Install Sample Notebook
 RUN fix-permissions /home/
 RUN mkdir /home/$NB_USER/c9-src && fix-permissions /home/$NB_USER/c9-src
-
-USER $NB_USER
-
 RUN fix-permissions /home/$NB_USER/c9-src/
+
+USER root
 COPY *.ipynb /home/$NB_USER/c9-src/
-WORKDIR $HOME
+WORKDIR /home/$NB_USER
 
 ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
