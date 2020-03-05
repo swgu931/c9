@@ -15,7 +15,7 @@ RUN conda install --quiet --yes \
     'numpy=1.16.*' \
     'scipy=1.3.*' \
     'sympy=1.4*' \
-    'matplotlib=3.1.*' 
+    'matplotlib=3.1.*' \
     'cvxpy'
 RUN conda clean -tipsy 
 RUN fix-permissions $CONDA_DIR 
