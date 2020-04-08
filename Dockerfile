@@ -18,8 +18,9 @@ RUN conda install --quiet --yes \
     'matplotlib=3.1.*' \
     'cvxpy'
 RUN conda install --quiet --yes \
-    pillow pandas seaborn scikit-learn \
-    toolz opencv-python
+    pillow pandas seaborn scikit-learn toolz \
+    
+RUN pip install --quiet opencv-python
     
 RUN conda clean -tipsy 
 RUN fix-permissions $CONDA_DIR 
