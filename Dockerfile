@@ -18,7 +18,7 @@ RUN conda install --quiet --yes \
     'matplotlib=3.1.*' \
     'cvxpy'
 RUN conda install --quiet --yes \
-    pillow pandas seaborn scikit-learn toolz \
+    pillow pandas seaborn scikit-learn toolz
     
 RUN pip install --quiet opencv-python tensoflow==1.15
     
