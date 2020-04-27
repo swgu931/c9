@@ -21,7 +21,7 @@ RUN conda install --quiet --yes \
     pillow pandas seaborn scikit-learn toolz
     
 RUN pip install --quiet opencv-python 
-RUN pip install --quiet tensoflow==1.15
+RUN pip install --quiet tensoflow==1.15.0
     
 RUN conda clean -tipsy 
 RUN fix-permissions $CONDA_DIR 
